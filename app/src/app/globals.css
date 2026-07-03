@@ -1,0 +1,30 @@
+@import 'tailwindcss';
+
+:root {
+  --background: #0C0B0A;
+  --foreground: #FAEDCD;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-cormorant);
+  --font-mono: var(--font-ibm);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), sans-serif;
+}
+
+::selection {
+  background: rgba(212, 163, 115, 0.3);
+  color: #FAEDCD;
+}

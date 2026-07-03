@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+httpx
+psycopg2-binary
+PyJWT
+python-dotenv
+python-multipart
+pydantic
+celery
+websockets

@@ -1,0 +1,993 @@
+You are a principal product designer, staff software engineer, ML infrastructure architect, distributed systems engineer, UX designer, AI researcher, and SaaS architect.
+
+Your task is to design and build an entire production-ready platform called
+
+MODEL DISTILLERY
+
+Tagline
+
+"Distill Intelligence."
+
+This is NOT another AI chatbot.
+
+This is the world's first AI Model Distillery where anyone can craft, blend, distill, fine-tune, evaluate, bottle, deploy and publish their own specialized open-source AI models through an immersive premium distillery-inspired experience.
+
+The product should feel like walking inside an ultra-modern whiskey distillery combined with Apple-level UI, Linear.app polish, Arc Browser interactions, and luxury industrial architecture.
+
+Every workflow should reinforce the metaphor that models are crafted—not trained.
+
+Never expose unnecessary ML complexity unless the user explicitly enables Advanced Mode.
+
+The platform should abstract machine learning into recipes, ingredients, barrels, copper stills, fermentation tanks, laboratories and bottled intelligence.
+
+===================================================
+CORE PRODUCT PHILOSOPHY
+===================================================
+
+Users are NOT ML Engineers.
+
+Users are Master Distillers.
+
+Models are Spirits.
+
+Datasets are Ingredients.
+
+Knowledge Sources are Barrels.
+
+Training Jobs are Distillation.
+
+Evaluation is Laboratory Testing.
+
+Deployment is Bottling.
+
+Publishing is Shelf Placement.
+
+Recipes define everything.
+
+===================================================
+VISUAL DESIGN
+===================================================
+
+Luxury Premium
+
+Dark Theme
+
+Warm Copper
+
+Brushed Brass
+
+Deep Walnut
+
+Black Leather
+
+Amber Lighting
+
+Soft Volumetric Glow
+
+Subtle Steam Animations
+
+Glass Morphism
+
+Premium Typography
+
+Large spacing
+
+Elegant animations
+
+No generic dashboard feeling.
+
+Every page should look handcrafted.
+
+===================================================
+COLOR PALETTE
+===================================================
+
+Background:
+#0B0A09
+
+Copper:
+#C87941
+
+Amber:
+#D89A45
+
+Gold:
+#E8C98A
+
+Wood:
+#3E2818
+
+Cream:
+#F8F5F2
+
+Accent:
+#FFB347
+
+===================================================
+TYPOGRAPHY
+===================================================
+
+Headings:
+Cormorant Garamond
+
+Body:
+Inter
+
+Numbers:
+IBM Plex Mono
+
+===================================================
+ICONOGRAPHY
+===================================================
+
+Copper stills
+
+Oak barrels
+
+Pipes
+
+Flasks
+
+Blueprints
+
+Blueprint grids
+
+Glass bottles
+
+Distillation drops
+
+Laboratory equipment
+
+Blueprint rulers
+
+===================================================
+PAGES
+===================================================
+
+1 Landing
+
+Hero
+
+Why Distillation
+
+Features
+
+Interactive Process
+
+Knowledge Barrels
+
+Recipe Preview
+
+Marketplace
+
+Deploy Anywhere
+
+Pricing
+
+FAQ
+
+Footer
+
+---------------------------------------------------
+
+2 Authentication
+
+Login
+
+Signup
+
+Organization
+
+Workspace
+
+Invite Team
+
+---------------------------------------------------
+
+3 Dashboard
+
+Overview
+
+Active Distillations
+
+GPU Usage
+
+Recent Models
+
+Recent Recipes
+
+Recent Datasets
+
+Notifications
+
+Deployment Status
+
+Marketplace Revenue
+
+Quick Actions
+
+---------------------------------------------------
+
+4 Recipe Builder
+
+This is the flagship experience.
+
+Sections
+
+Choose Base Model
+
+Flavor Profile
+
+Knowledge Blend
+
+Reasoning Style
+
+Teacher Models
+
+Tool Use
+
+Long Context
+
+Safety
+
+Inference Optimization
+
+Hardware Budget
+
+Deployment Targets
+
+Estimated Cost
+
+Benchmark Prediction
+
+GPU Hour Estimation
+
+Training Time
+
+Interactive sliders
+
+Animated gauges
+
+Recipe timeline
+
+Save recipe
+
+Clone recipe
+
+Version recipe
+
+---------------------------------------------------
+
+5 Knowledge Vault
+
+Looks like warehouse of barrels.
+
+Each barrel represents
+
+Programming
+
+Science
+
+Medical
+
+Finance
+
+Legal
+
+Robotics
+
+Electronics
+
+Books
+
+Wikipedia
+
+GitHub
+
+StackOverflow
+
+Research Papers
+
+Internal Docs
+
+User Uploads
+
+Clicking barrel opens
+
+Metadata
+
+License
+
+Tokens
+
+Quality
+
+Embeddings
+
+Version
+
+Update history
+
+---------------------------------------------------
+
+6 Dataset Manager
+
+Upload
+
+Cleaning
+
+Deduplication
+
+Filtering
+
+Chunking
+
+Statistics
+
+Validation
+
+Versioning
+
+Merging
+
+Preview
+
+Supports
+
+JSONL
+
+CSV
+
+Parquet
+
+Arrow
+
+HF Dataset
+
+S3
+
+Azure
+
+GCS
+
+Git
+
+---------------------------------------------------
+
+7 Teacher Models
+
+Catalog
+
+Capabilities
+
+Pricing
+
+Context Window
+
+Quality
+
+Reasoning
+
+Vision
+
+Tool Use
+
+Comparison
+
+Compatibility
+
+Multi-teacher blending
+
+---------------------------------------------------
+
+8 Synthetic Data Lab
+
+Pipeline Builder
+
+Prompt Generator
+
+Answer Generator
+
+Verifier
+
+Quality Filter
+
+Deduplication
+
+Difficulty Scoring
+
+Curriculum Builder
+
+Live statistics
+
+Pipeline visualization
+
+---------------------------------------------------
+
+9 Distillation Jobs
+
+Queue
+
+Running
+
+Completed
+
+Failed
+
+Timeline
+
+Logs
+
+Metrics
+
+GPU allocation
+
+Worker assignment
+
+Estimated finish
+
+---------------------------------------------------
+
+10 Training Monitor
+
+Real-time graphs
+
+Loss
+
+Learning rate
+
+GPU utilization
+
+Memory
+
+Checkpoint timeline
+
+Validation
+
+Throughput
+
+Tokens/sec
+
+Epochs
+
+---------------------------------------------------
+
+11 Evaluation Lab
+
+Compare models
+
+Run Benchmarks
+
+MMLU
+
+GPQA
+
+HumanEval
+
+LiveCodeBench
+
+GSM8K
+
+Truthfulness
+
+Latency
+
+Hallucination
+
+Radar Charts
+
+Leaderboard
+
+---------------------------------------------------
+
+12 Model Registry
+
+Bottle warehouse.
+
+Each model displayed as luxury bottle.
+
+Metadata
+
+Versions
+
+Tags
+
+Recipes
+
+Parent Model
+
+Downloads
+
+Deploy
+
+Clone
+
+Archive
+
+---------------------------------------------------
+
+13 Bottling Center
+
+Export model
+
+Quantization
+
+GGUF
+
+Safetensors
+
+MLX
+
+AWQ
+
+GPTQ
+
+TensorRT
+
+ONNX
+
+EXL2
+
+Metadata
+
+License
+
+Model Card
+
+Automatic packaging
+
+---------------------------------------------------
+
+14 Deployment Center
+
+Deploy
+
+Ollama
+
+llama.cpp
+
+vLLM
+
+SGLang
+
+Text Generation Inference
+
+KServe
+
+Docker
+
+Kubernetes
+
+RunPod
+
+Modal
+
+OpenAI Compatible API
+
+Anthropic Compatible API
+
+Load balancing
+
+Autoscaling
+
+Inference settings
+
+---------------------------------------------------
+
+15 Marketplace
+
+Recipes
+
+Models
+
+Adapters
+
+Prompt Packs
+
+Evaluation Suites
+
+Datasets
+
+Knowledge Packs
+
+Organizations
+
+Ratings
+
+Purchases
+
+Subscriptions
+
+---------------------------------------------------
+
+16 Recipe Library
+
+Personal recipes
+
+Templates
+
+Favorites
+
+Collections
+
+Version history
+
+---------------------------------------------------
+
+17 Organizations
+
+Members
+
+Roles
+
+Permissions
+
+Teams
+
+Audit logs
+
+Projects
+
+---------------------------------------------------
+
+18 Billing
+
+Usage
+
+GPU Hours
+
+Storage
+
+Bandwidth
+
+Marketplace Earnings
+
+Invoices
+
+---------------------------------------------------
+
+19 API Keys
+
+REST
+
+OpenAI Compatible
+
+Anthropic Compatible
+
+Webhook Management
+
+SDK Tokens
+
+---------------------------------------------------
+
+20 Documentation
+
+Interactive Docs
+
+API Explorer
+
+Examples
+
+Tutorials
+
+---------------------------------------------------
+
+21 Settings
+
+Profile
+
+Workspace
+
+Notifications
+
+Themes
+
+Advanced
+
+Secrets
+
+Connected Accounts
+
+===================================================
+BACKEND ARCHITECTURE
+===================================================
+
+Use production architecture.
+
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+Tailwind
+
+Framer Motion
+
+React Query
+
+Zustand
+
+Shadcn
+
+Backend
+
+FastAPI
+
+Python
+
+Celery
+
+Temporal
+
+Redis
+
+RabbitMQ
+
+Postgres
+
+DuckDB
+
+ClickHouse
+
+Neo4j
+
+MinIO
+
+S3 Compatible Storage
+
+Qdrant
+
+Authentication
+
+JWT
+
+OAuth
+
+Organization Support
+
+RBAC
+
+GPU Scheduler
+
+Training Workers
+
+Inference Workers
+
+Evaluation Workers
+
+Deployment Workers
+
+===================================================
+ML PIPELINE
+===================================================
+
+Recipe
+
+↓
+
+Dataset Builder
+
+↓
+
+Prompt Generator
+
+↓
+
+Teacher Models
+
+↓
+
+Verification
+
+↓
+
+Filtering
+
+↓
+
+Curriculum
+
+↓
+
+Fine-tuning
+
+↓
+
+Evaluation
+
+↓
+
+Packaging
+
+↓
+
+Registry
+
+↓
+
+Deployment
+
+===================================================
+MODEL SUPPORT
+===================================================
+
+Support
+
+Qwen
+
+Llama
+
+Mistral
+
+Gemma
+
+Phi
+
+DeepSeek
+
+InternLM
+
+GLM
+
+Allow adapters
+
+LoRA
+
+QLoRA
+
+Full Fine-tune
+
+DPO
+
+ORPO
+
+Continued Pretraining
+
+Preference Optimization
+
+===================================================
+DEPLOYMENT TARGETS
+===================================================
+
+Ollama
+
+llama.cpp
+
+vLLM
+
+SGLang
+
+Docker
+
+KServe
+
+OpenAI API
+
+Anthropic API
+
+HuggingFace
+
+Local
+
+Cloud
+
+===================================================
+SPECIAL UX
+===================================================
+
+Everything follows the distillery metaphor.
+
+Training progress should become
+
+Grinding Knowledge
+
+Fermenting
+
+Distilling
+
+Filtering
+
+Aging
+
+Laboratory Testing
+
+Bottling
+
+Shipping
+
+Model Registry should look like a premium bottle cellar.
+
+Marketplace should resemble a luxury whiskey showroom.
+
+Knowledge Vault should resemble rows of oak barrels.
+
+Recipe Builder should resemble a master distiller's workbench.
+
+Synthetic Data Lab should resemble a fermentation room with pipes, tanks, gauges, and animated liquid flow.
+
+Evaluation Lab should resemble a scientific tasting laboratory.
+
+Deployment Center should resemble a bottling plant.
+
+===================================================
+ANIMATIONS
+===================================================
+
+Steam
+
+Copper reflections
+
+Liquid filling bottles
+
+Flowing pipes
+
+Pressure gauges
+
+Rotating valves
+
+Barrel glow
+
+Hover physics
+
+Micro-interactions
+
+Sound-ready UI
+
+===================================================
+DELIVERABLES
+===================================================
+
+Generate the entire production application including
+
+Complete UX
+
+Wireframes
+
+UI
+
+Frontend
+
+Backend
+
+Database schema
+
+API design
+
+Authentication
+
+RBAC
+
+AI pipeline
+
+Training orchestration
+
+Deployment engine
+
+Marketplace
+
+Billing
+
+Admin
+
+Responsive design
+
+Accessibility
+
+Design system
+
+Component library
+
+Dark mode
+
+Light mode
+
+Interactive prototypes
+
+Sample datasets
+
+Demo recipes
+
+Everything should be modular, production-ready, scalable, and maintainable with enterprise-grade code organization and documentation.

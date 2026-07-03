@@ -1,0 +1,21 @@
+# Node / React
+app/node_modules/
+app/.next/
+app/out/
+app/build/
+.env
+.env.local
+.DS_Store
+
+# Python / Backend
+backend/venv/
+backend/__pycache__/
+backend/.pytest_cache/
+*.pyc
+backend/alembic.ini
+backend/distillery.db
+
+# ML Artifacts (DO NOT PUSH MODELS OR MASSIVE PACKS)
+backend/models/
+backend/packs/
+backend/uploads/
