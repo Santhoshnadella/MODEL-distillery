@@ -1,5 +1,16 @@
 # Model Distillery (Amber Forge) 🥃
 
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![FastAPI](https://img.shields.io/badge/FastAPI-005571?style=for-the-badge&logo=fastapi)
+![Celery](https://img.shields.io/badge/celery-%23a9cc54.svg?style=for-the-badge&logo=celery&logoColor=fff)
+![Redis](https://img.shields.io/badge/redis-%23DD0031.svg?style=for-the-badge&logo=redis&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-F8D521?style=for-the-badge&logoColor=black)
+
+
 **Model Distillery** is an end-to-end, open-source platform designed to transform the chaotic and highly technical process of Large Language Model (LLM) distillation into a streamlined, luxury craft workflow. 
 
 Just as a master distiller ages raw spirits in charred oak barrels to create a refined bourbon, this platform takes massive, unwieldy "Teacher" models (like 70B parameter giants) and distills their knowledge, reasoning, and tone into hyper-efficient, specialized "Student" models (like 8B parameter models) that can run on consumer hardware.
