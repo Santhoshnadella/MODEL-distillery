@@ -144,8 +144,7 @@ To kickstart your distillation process, we have generated over 200,000 highly di
 
 ---
 
-## 📸 Automated UI Documentation
-This project utilizes a headless **Playwright** automation script (`take_screenshots.py`) that intercepts API calls and automatically generates documentation imagery for the entire platform without requiring a seeded database.
+
 
 ---
 *Model Distillery was crafted to prove that complex machine learning orchestration can be packaged into a beautiful, intuitive, and highly functional user experience.*
