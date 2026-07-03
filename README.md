@@ -10,6 +10,11 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 ![HuggingFace](https://img.shields.io/badge/%F0%9F%A4%97_HuggingFace-F8D521?style=for-the-badge&logoColor=black)
 
+<br/>
+<div align="center">
+  <img src="hero_image.png" alt="Model Distillery Amber Forge" width="800"/>
+</div>
+<br/>
 
 **Model Distillery** is an end-to-end, open-source platform designed to transform the chaotic and highly technical process of Large Language Model (LLM) distillation into a streamlined, luxury craft workflow. 
 
