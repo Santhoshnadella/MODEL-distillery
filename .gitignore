@@ -17,5 +17,4 @@ backend/distillery.db
 
 # ML Artifacts (DO NOT PUSH MODELS OR MASSIVE PACKS)
 backend/models/
-backend/packs/
 backend/uploads/

@@ -89,6 +89,18 @@ Finished models are bottled and sent to the Cellar. With a single click, users c
 
 ---
 
+## 📚 Open-Source Prompt Packs (The Mash)
+
+To kickstart your distillation process, we have generated over 200,000 highly diverse seed prompts across three distinct scales. These files are built directly into this repository so the community can use them immediately to bootstrap their own models:
+
+- **[Proof of Concept (5,000 Prompts)](backend/packs/proof_of_concept_5k.txt):** Perfect for teaching a small model a specific format, tone, or style (e.g. JSON extraction).
+- **[Task-Specific Mastery (50,000 Prompts)](backend/packs/task_specific_50k.txt):** The "sweet spot" for enterprise applications. Enough volume to teach an LLM a strict domain logic path (e.g. pure Python generation).
+- **[General Foundation (150,000 Prompts)](backend/packs/general_foundation_150k.txt):** For massive knowledge distillation. This mimics the instruction diversity used to create open-source giants like Alpaca and Vicuna.
+
+*Note: These are raw text files meant to be processed and expanded by a Teacher Model inside the Distillery.*
+
+---
+
 ## 🚀 Getting Started
 
 ### Prerequisites
