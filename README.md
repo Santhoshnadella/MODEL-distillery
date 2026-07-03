@@ -6,6 +6,20 @@ Just as a master distiller ages raw spirits in charred oak barrels to create a r
 
 ---
 
+## 🥃 The Distillery Analogy: Intent & Agenda
+
+Machine learning workflows are notoriously chaotic, often feeling like raw, unrefined chemistry. **Model Distillery** was built with a specific agenda: to bring **craftsmanship, clarity, and intent** back to AI fine-tuning. We use a distillery analogy because the ML pipeline perfectly mirrors the creation of a fine spirit:
+
+1. **The Raw Mash (Teacher Models):** Massive foundation models (like Llama 70B) are powerful but bulky, expensive, and unrefined for specific tasks. They hold all the raw knowledge but lack focus.
+2. **The Fermentation (Synthetic Generation):** We introduce a few seed questions, and the Teacher model naturally "ferments" them into hundreds of thousands of diverse, complex training rows (the Synthetic Dataset).
+3. **The Copper Still (Unsloth & Celery):** This is where the magic happens. We boil down that massive dataset using cutting-edge LoRA fine-tuning infrastructure, evaporating the fluff and extracting only the pure logic and stylistic alignment.
+4. **The Cask Aging (The Tasting Room):** You cannot serve a spirit blindly. We built a dual-chat interface and automated benchmarks to let you "taste" the new model against its teacher, ensuring the flavor profile (accuracy) is preserved.
+5. **The Bottling (The Cellar):** The final, highly potent, ultra-efficient Student model is bottled into `.safetensors` and deployed instantly.
+
+Our intent is to prove that highly complex, backend-heavy ML orchestration can be packaged into a beautiful, intuitive, and deeply satisfying user experience.
+
+---
+
 ## 🏗️ System Architecture & Design
 
 The platform operates on a robust, decoupled, and async-first architecture designed to handle heavy ML workloads without blocking the UI.
