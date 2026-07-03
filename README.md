@@ -34,6 +34,12 @@ Machine learning workflows are notoriously chaotic, often feeling like raw, unre
 
 Our intent is to prove that highly complex, backend-heavy ML orchestration can be packaged into a beautiful, intuitive, and deeply satisfying user experience.
 
+<br/>
+<div align="center">
+  <img src="workflow_diagram.png" alt="Model Distillery Workflow Diagram" width="800"/>
+</div>
+<br/>
+
 ---
 
 ## 🏗️ System Architecture & Design
