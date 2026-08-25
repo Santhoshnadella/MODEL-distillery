@@ -89,6 +89,23 @@ Finished models are bottled and sent to the Cellar. With a single click, users c
 
 ---
 
+## 🏗️ Feature Completion Status (The Distillery Blueprint)
+
+To remain completely transparent about what is fully operational versus what is still being constructed in our distillery, here is the current status:
+
+### ✅ Fully Bottled & Ready (Existing Features)
+- **The Raw Mash & Fermentation (Synthetic Generation):** The Magpie generation pipeline is fully active, allowing models to generate massive synthetic datasets from seed prompts.
+- **The Copper Still (Core Engine & DB):** The FastAPI backend, Celery workers, and SQLAlchemy database are fully wired. The `engine.py` orchestrates real Unsloth fine-tuning (SFT & DPO).
+- **Security & Access (The Lock on the Cellar):** Full RBAC (Role-Based Access Control) using Argon2 hashing and JWTs is completely operational.
+
+### 🚧 Currently Fermenting (Scaffolded / Pending Deep Logic)
+- **The Tasting Room (Evaluation UI):** The `/evaluation` dashboard architecture exists, but the *Radar Charts* and *Side-by-Side Chat* are currently UI placeholders waiting for `chart.js` and WebSocket wiring.
+- **The Cellar Door (Marketplace):** The `/marketplace` UI gallery and backend DB models are scaffolded, but it needs to be wired together for live community model sharing.
+- **The Bottling Line (Export Routing):** The backend `/export` API routes are established, but the underlying `llama.cpp` scripts for GGUF/Ollama conversion are pending implementation.
+- **Quality Control (Observability):** We have created `metrics.py` and `checkpoint.py` logic, but they are waiting to be hooked up to a live Grafana dashboard.
+
+---
+
 ## 📚 Open-Source Prompt Packs (The Mash)
 
 To kickstart your distillation process, we have generated over 200,000 highly diverse seed prompts across three distinct scales. These files are built directly into this repository so the community can use them immediately to bootstrap their own models:
