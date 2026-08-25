@@ -16,6 +16,17 @@ services:
     depends_on:
       - redis
 
+  postgres:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: distillery
+      POSTGRES_PASSWORD: distillery_pass
+      POSTGRES_DB: distillery
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
   frontend:
     build:
       context: ./app
@@ -31,3 +42,6 @@ services:
     image: redis:7-alpine
     ports:
       - "6379:6379"
+
+volumes:
+  pgdata:

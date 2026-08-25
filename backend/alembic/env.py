@@ -16,8 +16,9 @@ if config.config_file_name is not None:
 
 import os
 import sys
-# Add backend directory to sys.path
+# Add backend directory and project root to sys.path
 sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.realpath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 from app import Base, DATABASE_URL
 

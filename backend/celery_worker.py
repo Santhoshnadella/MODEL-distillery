@@ -1,7 +1,12 @@
 import os
 import time
+import json
 from celery import Celery
 import redis
+try:
+    from .distillation import DistillationTask
+except ImportError:
+    from distillation import DistillationTask
 
 # Use the same REDIS_URL as FastAPI
 REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0")
@@ -24,108 +29,77 @@ celery_app.conf.update(
 # Sync Redis client for pub/sub progress updates
 redis_client = redis.from_url(REDIS_URL, decode_responses=True)
 
-
-try:
-    import torch
-    from unsloth import FastLanguageModel
-    from unsloth import is_bfloat16_supported
-    from trl import SFTTrainer
-    from transformers import TrainingArguments
-    from datasets import load_dataset
-    UNSLOTH_AVAILABLE = True
-except ImportError:
-    UNSLOTH_AVAILABLE = False
-
 @celery_app.task(bind=True, name="run_distillation_job")
 def run_distillation_job(self, job_id: int):
     """
-    Executes a distillation or fine-tuning job using Unsloth if available.
-    Falls back to simulation if running on Windows/Mac without NVIDIA hardware or required libraries.
+    Executes a distillation or fine-tuning job using the Distillation Engine.
     """
     channel = f"job_progress_{job_id}"
     
     redis_client.publish(channel, f'{{"stage": "Initializing Worker", "progress": 5}}')
     
-    if not UNSLOTH_AVAILABLE:
-        # --- DRY RUN FALLBACK (Hardware Missing) ---
-        redis_client.publish(channel, f'{{"stage": "Hardware Check Failed (Simulating)", "progress": 10}}')
-        
-        stages = [
-            "Preparing Dataset",
-            "Initializing Model (HuggingFace)",
-            "Starting Distillation Phase 1",
-            "Running Distillation Phase 2",
-            "Evaluating Checkpoints",
-            "Finalizing Artifacts"
-        ]
-        
-        total_steps = len(stages) * 10
-        current_step = 0
-        
-        for stage_idx, stage_name in enumerate(stages):
-            redis_client.publish(channel, f'{{"stage": "{stage_name} [DRY RUN]", "progress": {int(current_step/total_steps * 100)}}}')
-            for _ in range(5):  # Faster simulation
-                time.sleep(1) 
-                current_step += 1
-                progress = int((current_step / total_steps) * 100)
-                redis_client.publish(channel, f'{{"stage": "{stage_name} [DRY RUN]", "progress": {progress}}}')
-                self.update_state(state='PROGRESS', meta={'progress': progress, 'stage': stage_name})
-
-        redis_client.publish(channel, f'{{"stage": "Completed", "progress": 100, "status": "Completed"}}')
-        return {"job_id": job_id, "status": "Completed", "progress": 100, "mode": "simulated"}
-
-    # --- REAL UNSLOTH TRAINING INTEGRATION ---
     try:
-        redis_client.publish(channel, f'{{"stage": "Loading Unsloth Model", "progress": 15}}')
+        try:
+            from .app import SessionLocal, DistillationJob, Recipe, Dataset
+        except ImportError:
+            from app import SessionLocal, DistillationJob, Recipe, Dataset
+        db = SessionLocal()
+        job = db.query(DistillationJob).filter(DistillationJob.id == job_id).first()
+        if not job:
+            raise ValueError(f"Job {job_id} not found")
+            
+        recipe = db.query(Recipe).filter(Recipe.id == job.recipe_id).first()
+        if not recipe:
+             raise ValueError(f"Recipe {job.recipe_id} not found")
+             
+        dataset = db.query(Dataset).filter(Dataset.id == job.dataset_id).first()
+        dataset_path = dataset.file_path if dataset else "backend/packs/proof_of_concept_5k.txt"
         
-        max_seq_length = 2048 # Can be dynamically fetched from job details
-        dtype = None 
-        load_in_4bit = True 
-
-        # 1. Load Model (e.g., Llama-3 8B)
-        model, tokenizer = FastLanguageModel.from_pretrained(
-            model_name = "unsloth/llama-3-8b-bnb-4bit",
-            max_seq_length = max_seq_length,
-            dtype = dtype,
-            load_in_4bit = load_in_4bit,
-        )
-
-        redis_client.publish(channel, f'{{"stage": "Attaching LoRA Adapters", "progress": 30}}')
-        # 2. Add LoRA Adapters
-        model = FastLanguageModel.get_peft_model(
-            model,
-            r = 16, 
-            target_modules = ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"],
-            lora_alpha = 16,
-            lora_dropout = 0, 
-            bias = "none",    
-            use_gradient_checkpointing = "unsloth",
-            random_state = 3407,
-            use_rslora = False,
-            loftq_config = None,
-        )
-
-        redis_client.publish(channel, f'{{"stage": "Mapping Dataset", "progress": 45}}')
-        # 3. Load & Format Dataset (Mock path, would point to actual dataset)
-        # dataset = load_dataset("json", data_files="backend/packs/proof_of_concept_5k.txt", split="train")
-        # For demonstration of the integration, we skip the actual dataset download and simulate the trainer execution loop.
+        # Build recipe dict
+        recipe_dict = {
+            "base_model": recipe.base_model,
+            "method": recipe.method,
+            "epochs": recipe.epochs,
+            "batch_size": recipe.batch_size,
+            "context_length": recipe.context_length
+        }
         
-        redis_client.publish(channel, f'{{"stage": "Running SFTTrainer", "progress": 55}}')
-        # 4. Training (Simulated loop based on actual SFT Trainer logic to push metrics)
-        for i in range(1, 11):
-            time.sleep(2) # Simulating GPU iteration
-            redis_client.publish(channel, f'{{"stage": "Training Epoch {i}/10", "progress": 55 + (i * 3)}}')
-
-        redis_client.publish(channel, f'{{"stage": "Saving Artifacts (.safetensors)", "progress": 90}}')
-        # 5. Save the model locally
-        model_save_path = f"backend/models/job_{job_id}_lora_model"
-        os.makedirs(model_save_path, exist_ok=True)
-        # model.save_pretrained(model_save_path) # Disabled to prevent actual write on environments without full init
-        # tokenizer.save_pretrained(model_save_path)
-
+        redis_client.publish(channel, f'{{"stage": "Starting Distillation Engine", "progress": 15}}')
+        
+        # Instantiate and run the engine
+        task = DistillationTask(
+            job_id=str(job.id),
+            recipe=recipe_dict,
+            dataset_path=dataset_path,
+            output_dir="./backend/models"
+        )
+        
+        # Execute the training
+        output_dir = task.execute()
+        
+        # Update job status
+        job.status = "Completed"
+        job.progress = 100
+        job.artifact_path = output_dir
+        db.commit()
+        
         redis_client.publish(channel, f'{{"stage": "Completed", "progress": 100, "status": "Completed"}}')
-        return {"job_id": job_id, "status": "Completed", "progress": 100, "mode": "unsloth"}
+        return {"job_id": job_id, "status": "Completed", "progress": 100, "artifact_path": output_dir}
 
     except Exception as e:
         redis_client.publish(channel, f'{{"stage": "Failed: {str(e)}", "progress": 100, "status": "Failed"}}')
+        
+        try:
+             db.rollback()
+             if job:
+                 job.status = "Failed"
+                 db.commit()
+        except:
+             pass
+             
         return {"job_id": job_id, "status": "Failed", "error": str(e)}
+    finally:
+        try:
+            db.close()
+        except:
+            pass

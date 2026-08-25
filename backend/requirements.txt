@@ -2,6 +2,10 @@ fastapi
 uvicorn[standard]
 sqlalchemy
 httpx
+fastapi
+uvicorn[standard]
+sqlalchemy
+httpx
 psycopg2-binary
 PyJWT
 python-dotenv
@@ -9,3 +13,5 @@ python-multipart
 pydantic
 celery
 websockets
+argon2-cffi
+resend

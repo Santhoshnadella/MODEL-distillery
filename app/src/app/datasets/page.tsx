@@ -9,6 +9,8 @@ export default function DatasetsPage() {
   const [datasets, setDatasets] = useState<any[]>([]);
   const [uploading, setUploading] = useState(false);
 
+  const [isDragging, setIsDragging] = useState(false);
+
   useEffect(() => {
     fetchDatasets();
   }, []);
@@ -22,21 +24,42 @@ export default function DatasetsPage() {
     }
   };
 
-  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files || e.target.files.length === 0) return;
-    
+  const processFile = async (file: File) => {
     setUploading(true);
     try {
-      const file = e.target.files[0];
       await uploadDataset(file);
       await fetchDatasets();
     } catch (error) {
       console.error("Failed to upload dataset", error);
     } finally {
       setUploading(false);
-      e.target.value = ''; // Reset input
     }
   };
+
+  const handleFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    await processFile(e.target.files[0]);
+    e.target.value = ''; // Reset input
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = async (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+      await processFile(e.dataTransfer.files[0]);
+    }
+  };
+
   return (
     <DistilleryShell
       title="Curate raw ingredients with absolute precision."
@@ -46,11 +69,18 @@ export default function DatasetsPage() {
       <section className="grid gap-12 xl:grid-cols-[1fr_0.9fr]">
         <SectionCard title="Raw Ingredients" description="Manage your local ingredient stockpiles." icon="database">
           <div className="mt-8 space-y-6">
-            <label className="flex cursor-pointer flex-col items-center justify-center border border-dashed border-white/10 bg-transparent p-12 transition-colors hover:border-[#D4A373]/30 hover:bg-[#D4A373]/5">
+            <label 
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              className={`flex cursor-pointer flex-col items-center justify-center border border-dashed p-12 transition-colors ${
+                isDragging ? 'border-[#D4A373] bg-[#D4A373]/10' : 'border-white/10 bg-transparent hover:border-[#D4A373]/30 hover:bg-[#D4A373]/5'
+              }`}
+            >
               <div className="text-center">
                 <Upload className="mx-auto h-6 w-6 text-[#D4A373]" strokeWidth={1.5} />
                 <span className="mt-4 block text-sm font-light text-[#FAEDCD]">
-                  {uploading ? 'Infusing...' : 'Click to add ingredients'}
+                  {uploading ? 'Infusing...' : isDragging ? 'Drop file here' : 'Click or drag and drop to add ingredients'}
                 </span>
                 <span className="mt-2 block text-xs text-[#A9A59A] font-light">
                   JSONL, CSV, Parquet up to 50MB.
