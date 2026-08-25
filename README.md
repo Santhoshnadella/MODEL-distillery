@@ -91,18 +91,21 @@ Finished models are bottled and sent to the Cellar. With a single click, users c
 
 ## 🏗️ Feature Completion Status (The Distillery Blueprint)
 
+**Overall Completion: ~65%**
+
 To remain completely transparent about what is fully operational versus what is still being constructed in our distillery, here is the current status:
 
-### ✅ Fully Bottled & Ready (Existing Features)
+### ✅ Fully Bottled & Ready (Existing Features - The 65%)
 - **The Raw Mash & Fermentation (Synthetic Generation):** The Magpie generation pipeline is fully active, allowing models to generate massive synthetic datasets from seed prompts.
 - **The Copper Still (Core Engine & DB):** The FastAPI backend, Celery workers, and SQLAlchemy database are fully wired. The `engine.py` orchestrates real Unsloth fine-tuning (SFT & DPO).
 - **Security & Access (The Lock on the Cellar):** Full RBAC (Role-Based Access Control) using Argon2 hashing and JWTs is completely operational.
 
-### 🚧 Currently Fermenting (Scaffolded / Pending Deep Logic)
-- **The Tasting Room (Evaluation UI):** The `/evaluation` dashboard architecture exists, but the *Radar Charts* and *Side-by-Side Chat* are currently UI placeholders waiting for `chart.js` and WebSocket wiring.
-- **The Cellar Door (Marketplace):** The `/marketplace` UI gallery and backend DB models are scaffolded, but it needs to be wired together for live community model sharing.
-- **The Bottling Line (Export Routing):** The backend `/export` API routes are established, but the underlying `llama.cpp` scripts for GGUF/Ollama conversion are pending implementation.
-- **Quality Control (Observability):** We have created `metrics.py` and `checkpoint.py` logic, but they are waiting to be hooked up to a live Grafana dashboard.
+### 🚧 Currently Fermenting (Pending Deep Logic - The Remaining 35%)
+In simple terms, the remaining 35% is mostly about connecting the user interface to the backend. We still need to:
+1. **Make the Evaluation UI work:** Wire up the chat box so you can actually talk to the AI models side-by-side, and make the charts display real test scores instead of placeholders.
+2. **Make the Marketplace work:** Connect the gallery page to the database so users can actually upload, see, and download community recipes.
+3. **Make the Export button work:** Write the background script that converts the finished AI model into a downloadable file (like GGUF for Ollama) when a user clicks the export button.
+4. **Hook up the Dashboards:** Send the training metrics (like speed and errors) to a live visual dashboard (Grafana) so you can watch the models train in real-time.
 
 ---
 
